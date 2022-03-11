@@ -1,25 +1,18 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Post = require('../models/Post.js');
+var Tarea = require('./Tarea.js');
 //Para la encriptación del password
 var bcrypt = require('bcryptjs');
 var SALT_WORK_FACTOR = 10;
+
 var UserSchema = new Schema({
-    username: {
-        type: String, required: true, index: { unique: true }
-    },
+    username: { type: String, required: true, index: { unique: true }},
     password: { type: String, required: true },
-    fullname: String,
     email: { type: String, required: true },
     creationdate: { type: Date, default: Date.now },
-    role: {
-        type: String,
-        enum: ['admin', 'subscriber'],
-        default: 'subscriber '
-    },
-    posts: [{
+    tareas: [{
         type: Schema.ObjectId,
-        ref: 'Post',
+        ref: 'Tarea',
         default: null
     }]
 });

@@ -6,8 +6,8 @@ var TareaSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    title: String,
-    publicationdate: { type: Date, default: Date.now },
+    nombre: { type: String, required: true },
+    creationdate: { type: Date, default: Date.now },
     hecho: {type: Boolean, default: false}
 });
 module.exports = mongoose.model('Tarea', TareaSchema);
